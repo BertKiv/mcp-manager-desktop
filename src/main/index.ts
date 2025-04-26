@@ -86,7 +86,7 @@ ipcMain.on(IPC_CHANNELS.INSTALL_DEPENDENCY, async (_, name: string) => {
   if (!mainWindow) return
   console.log(`Installing ${name}`)
   try {
-    await dependencyService.installDependency(name)
+    await dependencyService.installDependency(name as unknown as DependencyName)
     const dependencies = await Promise.all([
       dependencyService.checkDependency(DependencyName.NPM),
       dependencyService.checkDependency(DependencyName.UX)
